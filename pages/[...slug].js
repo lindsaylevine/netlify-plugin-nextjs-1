@@ -32,11 +32,7 @@ export async function getStaticProps({
 
   return {
     // return all props
-    props: agilityProps,
-
-    // Next.js will attempt to re-generate the page when a request comes in, at most once every 10 seconds
-    // Read more on Incremental Static Regenertion here: https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
-    revalidate: 10,
+    props: { ...agilityProps, preview: preview || false },
   };
 }
 
@@ -56,7 +52,7 @@ export async function getStaticPaths({ locales, defaultLocale }) {
 }
 
 const AgilityPage = (props) => {
-  return <Layout {...props} />;
+  return <><div>preview: {props.preview}</div><Layout {...props} /></>;
 };
 
 export default AgilityPage;
