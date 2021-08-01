@@ -32,7 +32,8 @@ export async function getStaticProps({
 
   return {
     // return all props
-    props: { ...agilityProps, preview: preview || false },
+    revalidate: 10,
+    props: { ...agilityProps, preview: `${preview}` },
   };
 }
 
